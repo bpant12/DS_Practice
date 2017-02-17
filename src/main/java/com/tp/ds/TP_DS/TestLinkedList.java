@@ -110,6 +110,25 @@ public class TestLinkedList {
 	 }
 	 
 	 
+	 //LOOP in linkedlist
+	 public boolean findLoop(){
+	   Node slow = head;
+	   Node fast = head;
+	   
+	   while(slow!=null&&fast!=null){
+		   
+		   slow = slow.next;
+		   fast = fast.next.next;
+		   
+		   if(slow==fast){
+			   return true;
+		   }
+
+		   
+	   }
+	   return false;
+	 }
+	 
 	 //FIND Middle value in linkedlist
 	 public int middleValue(){
 		 Node temp = head;
