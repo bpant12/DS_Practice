@@ -12,6 +12,8 @@ public class TestLinkedList {
 		l.add(3);
 		l.add(3);
 		
+		l.delete(12);
+		
 		
 		System.out.println("NUMBER COUNT:"+l.numCount(3));
 		System.out.println("NUMBER COUNT:"+l.numCount(33));
@@ -93,23 +95,19 @@ public class TestLinkedList {
 		 }
 	 }
 	 
-/*	 public void delete(int i){
-		 Node temp = head;
-		while(temp!=null){
-			if(temp.next==null&&temp.i==i){
-				 head = null;
-				 break;
-			 }
-			else{
-			Node pre = temp;
-			Node next = pre.next;
-			
-			if(pre==head){
-				pre.next=null;
-			}
-			}
+	 //Delete from index
+	 public void delete(int i){
+		 Node prev=null,current=head;
+		 int count = 0;
+		 while(current!=null&& count < i){
+			 count++;
+			 prev = current;
+			 current  = current.next;
 		 }
-	 }*/
+		 if(count<this.getSize())
+		 prev.next = current.next;
+		 
+	 }
 	 
 	 
 	 //FIND Middle value in linkedlist
@@ -141,16 +139,17 @@ public class TestLinkedList {
 	 }
 	 
 	 public void reverse(){
-		 Node temp = head;
-		 Node f = temp;
-		// f.next = null;
-		// temp.next = null;
-		 while(temp!=null&&temp.next!=null){
-			 f.next.next = temp;
-			// temp = temp.next;
+		 Node next =null,current=head,prev = null;
+		 
+		 while(current!=null){
+			 next = current.next;
+			 current.next = prev;
+			 
+			 prev = current;
+			 current =  next;
 		 }
 		 
-		 head = f;
+		 head = prev;
 		 
 	 }
 	 
