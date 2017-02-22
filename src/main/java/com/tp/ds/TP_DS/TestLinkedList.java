@@ -36,6 +36,10 @@ public class TestLinkedList {
 		l1.add(3);
 		//l1.delete(3);
 		System.out.println("SIZE:"+l1.getSize());
+		
+		LinkedList l2 = l.meargeList(l1);
+		System.out.println(".................................");
+		l2.print();
 	}
 	
 }
@@ -129,6 +133,29 @@ public class TestLinkedList {
 	   return false;
 	 }
 	 
+	 public LinkedList meargeList(LinkedList list){
+		 
+		 Node curr1 = this.head;
+		 Node prev1 = this.head;
+		 
+		 Node curr2 = list.head;
+		 Node prev2 = list.head;
+		 
+		 int min = (this.getSize() < list.getSize()?this.getSize() : list.getSize() );
+		 
+		 for(int i=0;i<min&&curr1!=null&&curr2!=null;i++){
+			 if(curr1.i>curr2.i){
+				 
+				 prev2.next =prev1;
+			 }else{
+				 prev1.next =prev2;
+			 }
+			 curr1 = curr1.next;
+			 curr2 = curr2.next;
+		 }
+		 return this;
+	 }
+	 
 	 //FIND Middle value in linkedlist
 	 public int middleValue(){
 		 Node temp = head;
@@ -171,6 +198,22 @@ public class TestLinkedList {
 		 head = prev;
 		 
 	 }
+	 
+	 
+	 void pairWiseSwap()
+	    {
+	        Node temp = head;
+	 
+	        /* Traverse only till there are atleast 2 nodes left */
+	        while (temp != null && temp.next != null) {
+	 
+	            /* Swap the data */
+	            int k = temp.i;
+	            temp.i = temp.next.i;
+	            temp.next.i = k;
+	            temp = temp.next.next;
+	         }
+	    }
 	 
 /*	 public int nthFromLast(int i){
 		 Node temp = head;
